@@ -1,0 +1,45 @@
+<div class="vojvoj-login-container">
+  <div class="vojvoj-login-header">
+    <img class="vojvoj-brand-logo" alt="Tution System" src="../../../assets/image/image10.png" srcset="
+            ../../../assets/image/image10.png 1x,
+            ../../../assets/image/image10.png 2x
+          " />
+  </div>
+
+  <div class="vojvoj-login-content">
+    <p-card header="Admin Login" [style]="{ width: 'fit-content' }">
+      <form [formGroup]="loginFormGroup" (submit)="loginValidation()">
+        <!-- User Field -->
+        <p>
+          <mat-form-field class="w-100">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="userName" required />
+            <mat-error *ngIf="loginFormGroup.controls.userName.touched">
+              <span *ngIf="loginFormGroup.controls.userName.errors?.['required']">Username is required.</span>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <!-- Password Field-->
+        <p>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="passwordHide() ? 'password' : 'text'" formControlName="password" required />
+            <button mat-icon-button matSuffix type="button" (click)="hidePasswordEvent($event)"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide()">
+              <mat-icon>{{passwordHide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginFormGroup.controls.password.touched">
+              <span *ngIf="loginFormGroup.controls.password.errors?.['required']">Password is required.</span>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <button type="submit" class="btn vojvoj-login-btn">Login</button>
+        <div class="mt-4">
+          <a href="#" class="mt-4">Back</a>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

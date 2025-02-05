@@ -1,0 +1,41 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="{{ this.pageTitle }}">
+            <form [formGroup]="AdminCreateFormGroup" (submit)="formValidation()">
+                <div class="row">
+                    <div class="content-row">
+                        <div class="col-2 pt-3">UserName</div>
+                        <div class="col-6"><!-- Filter search term inputfield -->
+                            <mat-form-field class="w-100">
+                                <input matInput formControlName="userName" required />
+                                <mat-error *ngIf="AdminCreateFormGroup.controls.userName.touched">
+                                  <span *ngIf="AdminCreateFormGroup.controls.userName.errors?.['required']">Username is required.</span>
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="col-2 pt-3">Password</div>
+                        <div class="col-6"><!-- Filter search term inputfield -->
+                            <mat-form-field>
+                                <input matInput [type]="passwordHide() ? 'password' : 'text'" formControlName="password" required />
+                                <button mat-icon-button matSuffix type="button" (click)="hidePasswordEvent($event)"
+                                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide()">
+                                  <mat-icon>{{passwordHide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="AdminCreateFormGroup.controls.password.touched">
+                                  <span *ngIf="AdminCreateFormGroup.controls.password.errors?.['required']">Password is required.</span>
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <div class="form-element-button">
+                            <button type="submit" class="btn vojvoj-login-btn">Create Admin</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>

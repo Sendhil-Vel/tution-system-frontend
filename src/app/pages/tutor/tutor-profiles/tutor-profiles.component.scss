@@ -1,0 +1,84 @@
+#vojvoj-content {
+    width: 100%;
+    border: 1px solid black;
+
+    .vojvoj-login-content {
+        .p-card-body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .p-element {
+            width: 100%;
+            display: inline-block;
+            border: 1px solid red;
+        }
+
+        .p-card {
+            width: 100% !important;
+            border: 1px solid black;
+        }
+
+        .rowcol {
+            display: block ruby;
+
+            div {
+                margin: 1rem;
+            }
+
+            .rowcol1 {
+                width: 46%
+            }
+
+            .rowcol2 {
+                width: 46%
+            }
+
+            .rowcol3 {
+                width: 31%
+            }
+        }
+
+    }
+
+}
+
+.mat-button-toggle {
+    background-color: #306cee;
+    color: #ffffff;
+    line-height: 48px;
+    padding: 0 12px;
+    margin:10px;
+}
+
+.mat-button-toggle:hover {
+    background-color: transparent;
+    color: #1100ff !important;
+}
+
+.mat-button-toggle-checked {
+    background-color: #ec2c4c;
+    color: #67ec79 !important;
+}
+
+.mat-button-toggle-standalone{}
+.mat-button-toggle-appearance-standard {}
+.mat-button-toggle-group-appearance-standard {
+    border-radius: unset;
+    border: none;
+}
+.matgroup {
+    display:flexbox;
+}
+.vojvoj-login-btn {
+    width: 100%;
+    background-color: #39b9e9;
+    color: #000;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    filter: drop-shadow(0.1rem 0.1rem 0.15rem rgba(0, 0, 0, 0.5)) brightness(90%);
+
+    &:hover {
+        filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5)) brightness(100%);
+    }
+}

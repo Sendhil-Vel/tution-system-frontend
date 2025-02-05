@@ -1,0 +1,61 @@
+npm install
+    2  npm install
+    3  ng serve
+    4  ng serve
+    5  ng generate component tution_system\src\app\pages\admin-login
+    6  ng generate component tution_system/src/app/pages/admin-login
+    7  ng generate component /pages/admin-login
+    8  ng generate component pages/admin-login
+    9  ng generate component pages/agent-login
+   10  ng generate component pages/tutor-login
+   11  ng generate component pages/student-login
+   12  ng serve
+   13  ng generate component pages/home-page
+   14  ng serve
+   15  history
+   ng generate service core/services/admin-listings/admin-
+   <mat-icon>lock</mat-icon>
+   <mat-icon>lock_open</mat-icon>
+   <mat-icon>clear</mat-icon>
+   <mat-icon>delete</mat-icon>
+   <mat-icon>cancel</mat-icon>
+   <mat-icon>check</mat-icon>
+    ng generate class core/models/user-status/user-status --type=model
+
+    1  ng serve
+    2  ng generate services/test
+    3  ng generate service services/test
+    4  ng generate service services/core
+    5  ng generate service services/core/test
+    6  ng generate service services/core/services/test
+    7  ng generate service app/core/services/test
+    8  ng generate service core/services/test
+    9  ng generate service core/services/admin-listings/admin-listings
+   10  ng serve
+   11  ng generate service core/services/agent-listings/agent-listings
+   12  ng generate service core/services/student-listings/student-listings
+   13  ng generate service core/services/tutor-listings/tutor-listings
+   14  ng generate component pages/admin/listing-admin
+   15  ng generate component pages/admin/listing-student
+   16  ng generate component pages/admin/listing-tutor
+   17  ng serve
+   18  ng generate component pages/admin/create-admin
+   19  ng serve
+   20  ng generate service core/services/agent-login/agent-login
+   21  ng generate service core/services/student-login/student-login
+   22  ng generate service core/services/tutor-login/tutor-login
+   23  ng serve
+   24  ng generate component pages/student/student-register
+   25  ng generate component pages/tutor/tutor-register
+   26  ng serve
+   27  ng serve
+   28  ng generate service core/services/student-register/student-register
+   29  ng generate service core/services/tutor-register/tutor-register
+   30  ng generate service core/services/admin-register/admin-register
+   31  ng generate service core/services/tutor-register/tutor-register
+   32  ng generate service core/services/agent-register/agent-register
+   33  ng serve
+   34  bash deployment/deploy.sh
+   35  ng serve
+   36  history
+ng generate interface core/interfaces/subjects

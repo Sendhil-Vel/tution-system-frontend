@@ -1,0 +1,15 @@
+#vojvoj-content {
+    width: 100%;
+}
+
+.vojvoj-table {
+    .vojvoj-table-head {
+        background-color: #000;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+::ng-deep .vojvoj-table-head .mat-sort-header-arrow {
+    color: #fff;
+}

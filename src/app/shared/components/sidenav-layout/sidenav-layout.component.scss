@@ -1,0 +1,52 @@
+.vojvoj-sidenav-layout-container {
+    width: auto;
+    max-width: 100vw;
+    height: 100%;
+  }
+  
+  .vojvoj-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 1;
+    padding: 1rem 1rem 1rem 0;
+  
+    .vojvoj-sidenav-btn {
+      padding: 0.4rem;
+      margin: 0 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  
+  .vojvoj-sidenav {
+    min-width: 15%;
+    width: max-content;
+    background-color: #39b9e9;
+  
+    .vojvoj-brand {
+      padding: 1.5rem 0.5rem;
+    }
+    .vojvoj-brand-logo {
+      width: 150px;
+    }
+  }
+  
+  // mat-nav-list styles
+  
+  .vojvoj-sidenav-list {
+    .vojvoj-sidenav-list-item {
+      text-align: start;
+  
+      i {
+        margin-right: 5px;
+        color: #fff;
+      }
+    }
+    .vojvoj-sidenav-list-item-label {
+      color: #fff;
+      font-size: 14px;
+    }
+  }

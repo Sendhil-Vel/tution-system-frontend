@@ -1,0 +1,117 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="{{ this.pageTitle }}">
+            <div class="row">
+                <div class="col-6"><!-- Filter search term inputfield -->
+                    <mat-form-field>
+                        <mat-label>Search</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Type the search keywords" #input />
+                    </mat-form-field>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 d-flex justify-content-end">
+                    <span class="d-flex flex-row align-items-center">
+                        <i class="pi pi-list px-1"></i>
+                        <h6 class="mb-0">No. of record: {{ this.noOfRecords }}</h6>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Top Paginator -->
+            <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+
+            <!-- Post List table -->
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+                class="mat-elevation-z8 table table-hover vojvoj-table">
+
+                <!-- Post ID Column -->
+                <ng-container matColumnDef="userID">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by User ID" class="vojvoj-table-head">User ID</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.userID }} </td>
+                </ng-container>
+
+                <!-- Username Column -->
+                <ng-container matColumnDef="userEmail">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by UsernEmail" class="vojvoj-table-head">User Email</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userEmail }} </td>
+                </ng-container>
+
+                <!-- Handle Column -->
+                <ng-container matColumnDef="userFullname">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by userFullname" class="vojvoj-table-head">User Full Name</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userFullname }} </td>
+                </ng-container>
+
+                <!-- Caption Column -->
+                <ng-container matColumnDef="userDob">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by userDob" class="vojvoj-table-head">DOB</th>
+                    <ng-container mat-cell *matCellDef="let element">
+                        <td class="pe-auto" *ngIf="(element.userDob === '1900-01-01T00:00:00Z')">
+                            -
+                        </td>
+                        <td class="pe-auto" *ngIf="(element.userDob != '1900-01-01T00:00:00Z')">
+                            {{ element.userDob }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <!-- Title Column -->
+                <ng-container matColumnDef="userAddress">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by userAddress" class="vojvoj-table-head">Address</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userAddress }} </td>
+                </ng-container>
+
+                <!-- Created On Column -->
+                <ng-container matColumnDef="userMobile">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by userMobile" class="vojvoj-table-head">User Mobile</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userMobile }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="userAlternateEmail">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by userAlternateEmail" class="vojvoj-table-head">Alternate Email
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userAlternateEmail }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="isActive">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by isActive" class="vojvoj-table-head">is Active</th>
+                    <ng-container mat-cell *matCellDef="let element">
+                        <td class="pe-auto" *ngIf="(element.isActive === false)">
+                            <mat-icon (click)="updateisActive('cancel',element.userID)">lock</mat-icon>
+                        </td>
+                        <td class="pe-auto" *ngIf="(element.isActive === true)">
+                            <mat-icon (click)="updateisActive('check',element.userID)">lock_open</mat-icon>
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container matColumnDef="isVerified">
+                    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header
+                        sortActionDescription="Sort by isVerified" class="vojvoj-table-head">isVerified</th>
+                    <ng-container mat-cell *matCellDef="let element">
+                        <td class="pe-auto" *ngIf="(element.isVerified === false)">
+                            <mat-icon (click)="updateverified('cancel',element.userID)">cancel</mat-icon>
+                        </td>
+                        <td class="pe-auto" *ngIf="(element.isVerified === true)">
+                            <mat-icon (click)="updateverified('check',element.userID)">check</mat-icon>
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>

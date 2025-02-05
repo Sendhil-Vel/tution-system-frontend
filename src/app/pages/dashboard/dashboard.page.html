@@ -1,0 +1,30 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <div class="row">
+            <div class="col-3">
+                <p-card>
+                    <h6>New users / Total Users</h6>
+                    <h3> {{ this.userOneDay }} / {{ this.totalUser }}</h3>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card>
+                    <h6>New posts / Total posts</h6>
+                    <h3> {{ this.postOneDay }} / {{ this.totalPost }}</h3>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card>
+                    <h6>Cashout paid</h6>
+                    <h3> {{ this.cashoutPaid }} </h3>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card>
+                    <h6>Cashout unpaid</h6>
+                    <h3> {{ this.cashoutUnpaid }} </h3>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</vojvoj-sidenav-layout>

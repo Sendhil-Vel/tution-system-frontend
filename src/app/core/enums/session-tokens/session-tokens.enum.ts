@@ -1,0 +1,6 @@
+export enum SessionTokens {
+    AUTH_TOKEN="AUTH_TOKEN",
+    ADMIN_USER_ID="ADMIN_USER_ID",
+    ADMIN_USER_NAME="ADMIN_USER_NAME",
+    ADMIN_USER_OBJ="ADMIN_USER_OBJ",
+}

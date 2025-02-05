@@ -1,0 +1,133 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="Monthly token purchase count">
+            <div class="row">
+                <div class="col-6"><!-- Filter search term inputfield -->
+                    <mat-form-field>
+                      <mat-label>Search</mat-label>
+                      <input
+                        matInput
+                        (keyup)="applyFilter($event)"
+                        placeholder="Ex. date"
+                        #input
+                      />
+                    </mat-form-field>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn btn-success" (click)="exportToCsv()">
+                        <i class="pi pi-file-export"></i>
+                        <span>Export to CSV</span>
+                    </button>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <span class="d-flex flex-row align-items-center">
+                        <i class="pi pi-list px-1"></i>
+                        <h6 class="mb-0">No. of record: {{ this.noOfRecords }}</h6>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Top Paginator -->
+            <mat-paginator
+              [pageSizeOptions]="[25, 50, 100]"
+              showFirstLastButtons
+              aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+
+            <!-- Monthly token purchase count table -->
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort
+                (matSortChange)="announceSortChange($event)"
+                class="mat-elevation-z8 table table-hover vojvoj-table"
+            >
+
+                <!-- User ID Column -->
+                <ng-container matColumnDef="userID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by User ID"
+                        class="vojvoj-table-head"
+                    >User ID</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.userID }} </td>
+                </ng-container>
+            
+                <!-- Username Column -->
+                <ng-container matColumnDef="userName">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Username"
+                        class="vojvoj-table-head"
+                    >Username</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userName }} </td>
+                </ng-container>
+            
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Email"
+                        class="vojvoj-table-head"
+                    >Email</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+                </ng-container>  
+            
+                <!-- Tokens Column -->
+                <ng-container matColumnDef="tokens">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Tokens"
+                        class="vojvoj-table-head"
+                    >Tokens</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.tokens }} </td>
+                </ng-container> 
+            
+                <!-- Amount Column -->
+                <ng-container matColumnDef="amount">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Amount"
+                        class="vojvoj-table-head"
+                    >Amount</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.amount }} </td>
+                </ng-container> 
+            
+                <!-- Purchase Date Column -->
+                <ng-container matColumnDef="purchaseDate">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Purchase Date"
+                        class="vojvoj-table-head"
+                    >Purchase Date</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.purchaseDate.split('T')[0] }} </td>
+                </ng-container>
+
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>

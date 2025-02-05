@@ -1,0 +1,224 @@
+<vojvoj-sidenav-student>
+    <div id="vojvoj-content" vojvoj-content>
+        <div class="row">
+            <div class="vojvoj-login-content">
+                <p-card header="Tutor Profile Info" [style]="">
+                    <form [formGroup]="TutorProfileFormGroup" (submit)="profilevalidation()">
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tutor name : </mat-label>
+                                    <input matInput formControlName="tutorName" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutorName.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutorName.errors?.['required']">Tutor
+                                            name
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Date of birth</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <div class="w-100">
+                                    <mat-label>Tutor Nationality : </mat-label>
+                                    <mat-button-toggle-group name="usertype" aria-label="User Type"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="Singaporean">Singaporean/PR</mat-button-toggle>
+                                        <mat-button-toggle value="Foreigner">Foreigner</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutorNationality.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutorNationality.errors?.['required']">User
+                                            Type
+                                            is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="rowcol2">
+                                <div class="w-100">
+                                    <mat-label>Student Gender : </mat-label>
+                                    <mat-button-toggle-group name="studentGender" aria-label="Student Gender"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="male">Male</mat-button-toggle>
+                                        <mat-button-toggle value="female">Female</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutorGender.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutorGender.errors?.['required']">Student
+                                            gender
+                                            is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Postal Code : </mat-label>
+                                    <input matInput formControlName="postalCode" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.postalCode.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.postalCode.errors?.['required']">Student
+                                            Address
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Phone No : </mat-label>
+                                    <input matInput formControlName="phoneNo" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.phoneNo.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.phoneNo.errors?.['required']">Student
+                                            Address
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <div class="w-100">
+                                    <mat-label>Payment Option : </mat-label>
+                                    <mat-button-toggle-group name="paymentOption" aria-label="User Type"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="Paynow">Paynow</mat-button-toggle>
+                                        <mat-button-toggle value="PayLah">PayLah</mat-button-toggle>
+                                        <mat-button-toggle value="AccountNumber">Account Number</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.paymentOption.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.paymentOption.errors?.['required']">Payment
+                                            option is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tutoring Perferences: </mat-label>
+                                    <input matInput formControlName="tutoringPerference" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutoringPerference.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutoringPerference.errors?.['required']">Tutor
+                                            name
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <div class="w-100">
+                                    <mat-label>Tutor Standard : </mat-label>
+                                    <mat-button-toggle-group name="tutorStandard" aria-label="User Type"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="Paynow">Paynow</mat-button-toggle>
+                                        <mat-button-toggle value="PayLah">PayLah</mat-button-toggle>
+                                        <mat-button-toggle value="AccountNumber">Account Number</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tutor Experience : </mat-label>
+                                    <input matInput formControlName="tutorExperience" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutorExperience.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutorExperience.errors?.['required']">Tutor
+                                            experience is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tutor Qualification : </mat-label>
+                                    <input matInput formControlName="tutorQualification" required />
+                                    <mat-error *ngIf="TutorProfileFormGroup.controls.tutorQualification.touched">
+                                        <span
+                                            *ngIf="TutorProfileFormGroup.controls.tutorQualification.errors?.['required']">Tutor
+                                            qualification is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="w-100">
+                                <mat-label>Tutor Location : </mat-label>
+                                <div class="amatgroup">
+                                    <mat-button-toggle-group name="tutoringLocation" class="matgroup"
+                                        aria-label="User Type"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="tutorLocationA">
+                                            <div>
+                                                <b>North</b> Woodlands,<br>SembaWang,<br> Admiralty, Yishun,<br> Khatib
+                                            </div>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="tutorLocationB">
+                                            <div>
+                                                <b>North West</b> Bukit<br>Batok, CCK, Bukit<br>Panjang, Yew tee
+                                            </div>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="tutorLocationC">
+                                            <div>
+                                                <b>West</b> Jurong West,<br>Clementi, Buona<br>Vista, Kent
+                                                Ridge,<br>CommonWealth,<br>Queenstown
+                                            </div>
+                                        </mat-button-toggle>
+                                        <br>
+                                        <mat-button-toggle value="tutorLocationD">
+                                            <div>
+                                                <b>Central</b> Redhill,<br>Tiong Bahru,<br>Macpherson,
+                                                Bugis,<br>Orchard,
+                                                Newton
+                                            </div>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="tutorLocationE">
+                                            <div>
+                                                <b>North East</b> Yio Chu<br>Kang, Potong Pasir,<br>Punggol,
+                                                Hougang,<br>SendKang, Bishan,<br>AMK, Tao Payoh
+                                            </div>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="tutorLocationF">
+                                            <div>
+                                                <b>East</b> Aljunied, Paya<br>Lenbar, Eunos,<br>Tampines, Marine<br>
+                                                Parade,
+                                                Pasir Ris,<br>Changi
+                                            </div>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="tutorLocationG">
+                                            <div>
+                                                <b>South</b> Tanjong<br>Pagar, Marina South,<br>Harbourfront,
+                                                Telok<br>Blangah
+                                            </div>
+                                        </mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol2">
+                                <div class="divmain">
+                                    <button type="submit" class="btn vojvoj-login-btn">Update Tutor Profile
+                                        Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</vojvoj-sidenav-student>

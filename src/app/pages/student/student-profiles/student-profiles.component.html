@@ -1,0 +1,418 @@
+<vojvoj-sidenav-student>
+    <div id="vojvoj-content" vojvoj-content>
+        <div class="row">
+            <div class="vojvoj-login-content">
+                <p-card header="Student" [style]="">
+                    <form [formGroup]="StudentProfileFormGroup" (submit)="profilevalidation()">
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Person name</mat-label>
+                                    <input matInput formControlName="personName" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.personName.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.personName.errors?.['required']">Person
+                                            name
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Student name</mat-label>
+                                    <input matInput formControlName="studentName" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.studentName.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.studentName.errors?.['required']">Student
+                                            Name
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <div class="w-100">
+                                    <mat-label>User Type </mat-label>
+                                    <mat-button-toggle-group formControlName="usertype" aria-label="User Type"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="male">Parent</mat-button-toggle>
+                                        <mat-button-toggle value="female">Student</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.usertype.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.usertype.errors?.['required']">User
+                                            Type
+                                            is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="rowcol2">
+                                <div class="w-100">
+                                    <mat-label>Student Gender </mat-label>
+                                    <mat-button-toggle-group formControlName="studentGender" aria-label="Student Gender"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="male">Male</mat-button-toggle>
+                                        <mat-button-toggle value="female">Female</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.studentGender.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.studentGender.errors?.['required']">Student
+                                            gender
+                                            is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput formControlName="emailAddress" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.emailAddress.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.emailAddress.errors?.['required']">Email
+                                            Address
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol2">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Student Address</mat-label>
+                                    <input matInput formControlName="studentAddress" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.studentAddress.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.studentAddress.errors?.['required']">Student
+                                            Address
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Student Grade</mat-label>
+                                    <input matInput formControlName="studentGrade" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.studentGrade.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.studentGrade.errors?.['required']">Student
+                                            Grade is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="rowcol1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Budget</mat-label>
+                                    <input matInput formControlName="Budget" required />
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.Budget.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.Budget.errors?.['required']">Budget
+                                            is required.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="fullrow">
+                                <div>timeSlot</div>
+                                <table class="table_schedule_tutee_form table">
+                                    <thead>
+                                        <tr class="row no-gutters">
+                                            <th class="col">Slots</th>
+                                            <th class="col">Mon</th>
+                                            <th class="col">Tue</th>
+                                            <th class="col">Wed</th>
+                                            <th class="col">Thu</th>
+                                            <th class="col">Fri</th>
+                                            <th class="col">Sat</th>
+                                            <th class="col">Sun</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row no-gutters">
+                                            <td class="col coltitle">08-12h</td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-0-time_slots_0"
+                                                        name="job_schedule_period-0-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-0-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-1-time_slots_0"
+                                                        name="job_schedule_period-1-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-1-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-2-time_slots_0"
+                                                        name="job_schedule_period-2-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-2-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-3-time_slots_0"
+                                                        name="job_schedule_period-3-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-3-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-4-time_slots_0"
+                                                        name="job_schedule_period-4-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-4-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-5-time_slots_0"
+                                                        name="job_schedule_period-5-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-5-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-6-time_slots_0"
+                                                        name="job_schedule_period-6-time_slots" type="checkbox"
+                                                        value="1" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-6-time_slots_0"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                        </tr>
+                                        <tr class="row no-gutters">
+                                            <td class="col coltitle">12-15h</td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-0-time_slots_1"
+                                                        name="job_schedule_period-0-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-0-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-1-time_slots_1"
+                                                        name="job_schedule_period-1-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-1-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-2-time_slots_1"
+                                                        name="job_schedule_period-2-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-2-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-3-time_slots_1"
+                                                        name="job_schedule_period-3-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-3-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-4-time_slots_1"
+                                                        name="job_schedule_period-4-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-4-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-5-time_slots_1"
+                                                        name="job_schedule_period-5-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-5-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-6-time_slots_1"
+                                                        name="job_schedule_period-6-time_slots" type="checkbox"
+                                                        value="2" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-6-time_slots_1"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                        </tr>
+                                        <tr class="row no-gutters">
+                                            <td class="col coltitle">15-18h</td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-0-time_slots_2"
+                                                        name="job_schedule_period-0-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-0-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-1-time_slots_2"
+                                                        name="job_schedule_period-1-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-1-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-2-time_slots_2"
+                                                        name="job_schedule_period-2-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-2-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-3-time_slots_2"
+                                                        name="job_schedule_period-3-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-3-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-4-time_slots_2"
+                                                        name="job_schedule_period-4-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-4-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-5-time_slots_2"
+                                                        name="job_schedule_period-5-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-5-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-6-time_slots_2"
+                                                        name="job_schedule_period-6-time_slots" type="checkbox"
+                                                        value="3" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-6-time_slots_2"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                        </tr>
+                                        <tr class="row no-gutters">
+                                            <td class="col coltitle">18-21h</td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-0-time_slots_3"
+                                                        name="job_schedule_period-0-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-0-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-1-time_slots_3"
+                                                        name="job_schedule_period-1-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-1-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-2-time_slots_3"
+                                                        name="job_schedule_period-2-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-2-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-3-time_slots_3"
+                                                        name="job_schedule_period-3-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-3-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-4-time_slots_3"
+                                                        name="job_schedule_period-4-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-4-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-5-time_slots_3"
+                                                        name="job_schedule_period-5-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-5-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                            <td class="col">
+                                                <div class="custom-control custom-checkbox"><input
+                                                        id="id_job_schedule_period-6-time_slots_3"
+                                                        name="job_schedule_period-6-time_slots" type="checkbox"
+                                                        value="4" class="custom-control-input timeclsslot"><label
+                                                        for="id_job_schedule_period-6-time_slots_3"
+                                                        class="custom-control-label"></label></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol2set">
+                                <div class="w-100">
+                                    <mat-label>Class Frequency </mat-label>
+                                    <mat-button-toggle-group formControlName="classFrequency"
+                                        aria-label="Class Frequency"
+                                        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()">
+                                        <mat-button-toggle value="1LessonWeek">1 Lesson/Week</mat-button-toggle>
+                                        <mat-button-toggle value="2LessonWeek">2 Lesson/Week</mat-button-toggle>
+                                        <mat-button-toggle value="3LessonWeek">3 Lesson/Week</mat-button-toggle>
+                                        <mat-button-toggle value="4LessonWeek">4 Lesson/Week</mat-button-toggle>
+                                        <mat-button-toggle value="5LessonWeek">5 Lesson/Week</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <mat-error *ngIf="StudentProfileFormGroup.controls.classFrequency.touched">
+                                        <span
+                                            *ngIf="StudentProfileFormGroup.controls.classFrequency.errors?.['required']">Class
+                                            Frequency is required.</span>
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol1">
+                                <mat-form-field  class="w-100">
+                                    <mat-label>Textarea</mat-label>
+                                    <textarea matInput formControlName="description" required></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="rowcol">
+                            <div class="rowcol2">
+                                <div class="divmain">
+                                    <button type="submit" class="btn vojvoj-login-btn">Update Student Profile
+                                        Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</vojvoj-sidenav-student>

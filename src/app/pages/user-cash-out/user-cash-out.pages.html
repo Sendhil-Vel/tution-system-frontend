@@ -1,0 +1,166 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="User cash out">
+            <div class="row">
+                <div class="col-6"><!-- Filter search term inputfield -->
+                    <mat-form-field>
+                      <mat-label>Search</mat-label>
+                      <input
+                        matInput
+                        (keyup)="applyFilter($event)"
+                        placeholder="Ex. user ID, username, strip ID, etc"
+                        #input
+                      />
+                    </mat-form-field>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn btn-success" (click)="exportToCsv()">
+                        <i class="pi pi-file-export"></i>
+                        <span>Export to CSV</span>
+                    </button>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <span class="d-flex flex-row align-items-center">
+                        <i class="pi pi-list px-1"></i>
+                        <h6 class="mb-0">No. of record: {{ this.noOfRecords }}</h6>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Top Paginator -->
+            <mat-paginator
+              [pageSizeOptions]="[25, 50, 100]"
+              showFirstLastButtons
+              aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+
+            <!-- User Cash Out table -->
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort
+                (matSortChange)="announceSortChange($event)"
+                class="mat-elevation-z8 table table-hover vojvoj-table"
+            >
+
+                <!-- User ID Column -->
+                <ng-container matColumnDef="userID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by User ID"
+                        class="vojvoj-table-head"
+                    >User ID</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.userID }} </td>
+                </ng-container>
+            
+                <!-- Username Column -->
+                <ng-container matColumnDef="userName">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Username"
+                        class="vojvoj-table-head"
+                    >Username</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.userName }} </td>
+                </ng-container>
+            
+                <!-- Cashout USD Amt Column -->
+                <ng-container matColumnDef="cashoutUsdAmount">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Cashout USD Amt"
+                        class="vojvoj-table-head"
+                    >Cashout USD Amt.</th>
+                    <td mat-cell *matCellDef="let element"> $ {{ element.cashoutUsdAmount }} </td>
+                </ng-container>
+            
+                <!-- Stripe Email Column -->
+                <ng-container matColumnDef="stripeEmail">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Stripe Email"
+                        class="vojvoj-table-head"
+                    >Stripe Email</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.stripeEmail }} </td>
+                </ng-container>
+            
+                <!-- Stripe ID Column -->
+                <ng-container matColumnDef="stripeID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Stripe ID"
+                        class="vojvoj-table-head"
+                    >Stripe ID</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.stripeID }} </td>
+                </ng-container>
+            
+                <!-- Process Status Column -->
+                <ng-container matColumnDef="processStatus">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Process Status"
+                        class="vojvoj-table-head"
+                    >Process Status</th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                        @if (element.processStatus === 'Completed') {
+                            <span class="text-success fw-bold">{{ element.processStatus }}</span>
+                        }
+                        @if (element.processStatus === 'Failed') {
+                            <span class="text-danger fw-bold">{{ element.processStatus }}</span>
+                        }
+                    </td>
+                </ng-container>
+            
+                <!-- Response Code Column -->
+                <ng-container matColumnDef="responseCode">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Response Code"
+                        class="vojvoj-table-head"
+                    >Response Code</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.responseCode }} </td>
+                </ng-container>
+            
+                <!-- Process Date Column -->
+                <ng-container matColumnDef="processDate">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Process Date"
+                        class="vojvoj-table-head"
+                    >Process Date</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.processDate }} </td>
+                </ng-container>
+                
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>

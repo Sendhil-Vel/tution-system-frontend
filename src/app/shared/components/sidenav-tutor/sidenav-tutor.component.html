@@ -1,0 +1,42 @@
+<mat-drawer-container class="vojvoj-sidenav-layout-container" autosize>
+    <mat-drawer #drawer class="vojvoj-sidenav" mode="side" opened="true">
+        <div class="vojvoj-brand d-flex justify-content-between">
+            <img class="vojvoj-brand-logo" alt="Tution System" src="../../../assets/image/image10.png" srcset="../../../assets/image/image10.png 1x, ../../../assets/image/image10.png 2x">
+            <button type="button" class="btn btn-dark" (click)="logoutSession()"><span class="pi pi-sign-out"></span></button>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-nav-list class="overflow-y-auto vojvoj-sidenav-list">
+            @for (menuItem of menuItems; track menuItem) {
+                @if (menuItem.type === "url") {
+                    <a mat-list-item [href]="menuItem.routeTo" class="vojvoj-sidenav-list-item">@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}}"></i>} <span class="vojvoj-sidenav-list-item-label">{{ menuItem.label }}</span></a>
+                }
+                @else if (menuItem.type === "route") {
+                    <a mat-list-item [routerLink]="menuItem.routeTo" class="vojvoj-sidenav-list-item">@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}}"></i>} <span class="vojvoj-sidenav-list-item-label">{{ menuItem.label }}</span></a>
+                }
+                @else {
+                    <a mat-list-item class="vojvoj-sidenav-list-item">@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}}"></i>} <span class="vojvoj-sidenav-list-item-label">{{ menuItem.label }}</span></a>
+                }
+            }
+        </mat-nav-list>
+
+        <!--Bottom Menu Items-->
+        <mat-divider></mat-divider>
+        <mat-nav-list class="overflow-y-auto vojvoj-sidenav-list">
+            @for (menuItem of bottomMenuItems; track menuItem) {
+                @if (menuItem.type === "url") {
+                    <a mat-list-item [href]="menuItem.routeTo">@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}} me-1"></i>} <span>{{ menuItem.label }}</span></a>
+                }
+                @else if (menuItem.type === "route") {
+                    <a mat-list-item [routerLink]="menuItem.routeTo">@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}} me-1"></i>} <span>{{ menuItem.label }}</span></a>
+                }
+                @else {
+                    <a mat-list-item>@if (menuItem.iconClass) {<i class="{{menuItem.iconClass}} me-1"></i>} <span>{{ menuItem.label }}</span></a>
+                }
+            }
+        </mat-nav-list>
+    </mat-drawer>
+    <div class="vojvoj-sidenav-content">
+        <!-- <span class="pi pi-bars vojvoj-sidenav-btn" (click)="drawer.toggle()"></span> -->
+        <ng-content select="[vojvoj-content]"></ng-content>
+    </div>
+</mat-drawer-container>

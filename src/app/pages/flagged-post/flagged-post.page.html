@@ -1,0 +1,206 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="Flagged Posts">
+            <div class="row">
+                <div class="col-6">
+                    <!-- Filter search term inputfield -->
+                    <mat-form-field>
+                      <mat-label>Search</mat-label>
+                      <input
+                        matInput
+                        (keyup)="applyFilter($event)"
+                        placeholder="Ex. flag ID, post ID, title, etc"
+                        #input
+                      />
+                    </mat-form-field>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn btn-success" (click)="exportToCsv()">
+                        <i class="pi pi-file-export"></i>
+                        <span>Export to CSV</span>
+                    </button>
+                </div>
+                <div class="col-2 d-flex justify-content-end">
+                    <span class="d-flex flex-row align-items-center">
+                        <i class="pi pi-list px-1"></i>
+                        <h6 class="mb-0">No. of record: {{ this.noOfRecords }}</h6>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Top Paginator -->
+            <mat-paginator
+              [pageSizeOptions]="[25, 50, 100]"
+              showFirstLastButtons
+              aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+
+            <!-- Flagged posts table -->
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort
+                (matSortChange)="announceSortChange($event)"
+                class="mat-elevation-z8 table table-hover vojvoj-table"
+            >
+
+                <!-- Flag ID Column -->
+                <ng-container matColumnDef="flaggingID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Flag ID"
+                        class="vojvoj-table-head"
+                    >Flagging ID</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.flaggingID }} </td>
+                </ng-container>
+
+                <!-- Post ID Column -->
+                <ng-container matColumnDef="postID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Post ID"
+                        class="vojvoj-table-head"
+                    >Post ID</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.postID }} </td>
+                </ng-container>
+
+                <!-- Flag Category Column -->
+                <ng-container matColumnDef="flagCategory">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Flag Category"
+                        class="vojvoj-table-head"
+                    >Flag Category</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.flagCategory }} </td>
+                </ng-container>
+
+                <!-- Duration Column -->
+                <ng-container matColumnDef="duration">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Duration"
+                        class="vojvoj-table-head"
+                    >Duration</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.duration }} </td>
+                </ng-container>
+
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Title"
+                        class="vojvoj-table-head"
+                    >Title</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.title }} </td>
+                </ng-container>
+
+                <!-- Media Column -->
+                <ng-container matColumnDef="mediaID">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        class="vojvoj-table-head"
+                    >Media</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data">
+                        <vojvoj-media-file-view 
+                        [mediaId]="element.mediaID"
+                        [mediaType]="element.mediaType"
+                        [mediaTitle]="element.title"
+                        [mediaUrl]="element.mediaUrl"></vojvoj-media-file-view>
+                    </td>
+                </ng-container>
+
+                <!-- Posted By User Column -->
+                <ng-container matColumnDef="postedByUser">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Posted By User"
+                        class="vojvoj-table-head"
+                    >Posted By User</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.postedByUser }} </td>
+                </ng-container>
+
+                <!-- Media Created date Column -->
+                <ng-container matColumnDef="mediaCreatedDate">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Media Created date"
+                        class="vojvoj-table-head"
+                    >Media Created date</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.mediaCreatedDate.split('T')[0] }} </td>
+                </ng-container>
+
+                <!-- Flagged by user Column -->
+                <ng-container matColumnDef="flaggedbyUser">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Flagged by user"
+                        class="vojvoj-table-head"
+                    >Flagged by user</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.flaggedbyUser }} </td>
+                </ng-container>
+
+                <!-- Flagged date Column -->
+                <ng-container matColumnDef="flaggedDate">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Flagged date"
+                        class="vojvoj-table-head"
+                    >Flagged date</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> {{ element.flaggedDate.split('T')[0] }} </td>
+                </ng-container>
+
+                <!-- Unflag post Column -->
+                <ng-container matColumnDef="unflagPost">
+                    <th
+                        scope="col"
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header
+                        sortActionDescription="Sort by Unflag post"
+                        class="vojvoj-table-head"
+                    >Unflag post</th>
+                    <td mat-cell *matCellDef="let element" class="vojvoj-table-data"> 
+                        <button type="button" class="btn btn-dark" (click)="unflagPost(element.postID, element.flaggingID)">
+                            <img id="unflag-icon" src="assets/icons/flag-off-red.svg" alt="unflag-icon" />
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>

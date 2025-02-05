@@ -1,0 +1,23 @@
+@if (this.mediaType === 'IMAGE') {
+    <button type="button" class="btn btn-primary" (click)="showDialog()">
+        <i class="pi pi-image"></i>
+    </button>
+    <p-dialog header="Title: {{ mediaTitle }}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <img class="img-fluid" src="{{ this.mediaURLPath }}" alt="{{ this.mediaTitle }}" />
+    </p-dialog>
+}
+@if (this.mediaType === 'VIDEO') {
+    <button type="button" class="btn btn-primary" (click)="showDialog()">
+        <i class="pi pi-video"></i>
+    </button>
+    <p-dialog header="Title: {{ mediaTitle }}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <div class="col-12 text-center">
+            <video
+            id="vojvojVideo"
+            class="img-fluid"
+            #vojvojVideo
+            controls
+            ></video>
+        </div>
+    </p-dialog>
+}

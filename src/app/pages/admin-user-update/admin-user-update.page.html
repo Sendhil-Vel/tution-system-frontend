@@ -1,0 +1,103 @@
+<vojvoj-sidenav-layout>
+    <div id="vojvoj-content" vojvoj-content>
+        <p-card header="User Update">
+            <form [formGroup]="adminUserUpdateFg" (submit)="updateAdminUserData()">
+                <p class="h5">Name</p>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Name</mat-label>
+                            <input
+                            matInput
+                            formControlName="adminUserName"
+                            />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <button 
+                        mat-fab 
+                        aria-label="Name edit button."
+                        type="button"
+                        (click)="toggleUserNameEditEvent()"
+                        >
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <p class="h5 mt-4">Change password</p>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Current password</mat-label>
+                            <input 
+                            matInput
+                            formControlName="currentPassword"
+                            [type]="currentPasswordHide() ? 'password' : 'text'"
+                            />
+                            <button
+                            mat-icon-button
+                            matSuffix
+                            (click)="hideCurrentPasswordEvent($event)"
+                            [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="currentPasswordHide()"
+                            type="button"
+                            >
+                                <mat-icon> {{ currentPasswordHide() ? 'visibility_off' : 'visibility' }} </mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>New password</mat-label>
+                             <input 
+                             matInput
+                             formControlName="newPassword"
+                             [type]="newPasswordHide() ? 'password' : 'text'"
+                             />
+                             <button
+                             mat-icon-button
+                             matSuffix
+                             (click)="hideNewPasswordEvent($event)"
+                             [attr.aria-label]="'Hide new password'"
+                             [attr.aria-pressed]="newPasswordHide()"
+                             type="button"
+                             >
+                                <mat-icon> {{ newPasswordHide() ? 'visibility_off' : 'visibility' }} </mat-icon>
+                             </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Confirm new password</mat-label>
+                             <input 
+                             matInput
+                             formControlName="confirmNewPassword"
+                             [type]="confirmNewPasswordHide() ? 'password' : 'text'"
+                             />
+                             <button
+                             mat-icon-button
+                             matSuffix
+                             (click)="hideConfirmNewPasswordEvent($event)"
+                             [attr.aria-label]="'Hide confirm new password'"
+                             [attr.aria-pressed]="confirmNewPasswordHide()"
+                             type="button"
+                             >
+                                <mat-icon> {{ confirmNewPasswordHide() ? 'visibility_off' : 'visibility' }} </mat-icon>
+                             </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-success w-100">Update</button>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</vojvoj-sidenav-layout>
