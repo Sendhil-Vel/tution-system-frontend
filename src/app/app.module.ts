@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgMaterialModulesModule } from './shared/modules/ng-material-modules.module';
 import { PrimeNgModulesModule } from './shared/modules/prime-ng-modules.module';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { DashboardPage } from './pages/admin/dashboard/dashboard.page';
 import { SidenavLayoutComponent } from './shared/components/sidenav-layout/sidenav-layout.component';
 import { UserProfilesPage } from './pages/user-profiles/user-profiles.page';
@@ -52,6 +52,11 @@ import { CreateTutorComponent } from './pages/admin/create-tutor/create-tutor.co
 import { StudentProfilesComponent } from './pages/student/student-profiles/student-profiles.component';
 import { TutorProfilesComponent } from './pages/tutor/tutor-profiles/tutor-profiles.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
@@ -108,8 +113,15 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    CdkAccordionModule,
   ],
   providers: [
+    provideNativeDateAdapter(),
     provideAnimationsAsync(),
     MessageService
   ],
