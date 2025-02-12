@@ -65,54 +65,70 @@ export class TutorRegisterComponent {
   }
 
   loadSubjects() {
-    this.subjectsList = {
-      preSchool: [
-        { id: 1, name: 'English' },
-        { id: 2, name: 'Math' },
-        { id: 3, name: 'Science' },
-        { id: 4, name: 'Chinese' },
-        { id: 5, name: 'Phonics' },
-        { id: 6, name: 'Creative Writing' },
-        { id: 7, name: 'Tamil' },
-        { id: 8, name: 'Malay' },
-        { id: 9, name: 'Art' },
-        { id: 10, name: 'Hindi' }
-      ],
-      primary: [
-        { id: 11, name: 'English' },
-        { id: 12, name: 'Math' },
-        { id: 13, name: 'Science' },
-        { id: 14, name: 'Chinese' }
-      ],
-      lowerSecondary: [
-        { id: 15, name: 'English' },
-        { id: 16, name: 'Math' },
-        { id: 17, name: 'Science' },
-        { id: 18, name: 'Chinese' },
-        { id: 19, name: 'Physics' },
-        { id: 20, name: 'Biology' },
-        { id: 21, name: 'History' }
-      ],
-      ip: [
-        { id: 22, name: 'English' },
-        { id: 23, name: 'Math' },
-        { id: 24, name: 'Science' },
-        { id: 25, name: 'Physics' },
-        { id: 26, name: 'Chemistry' },
-        { id: 27, name: 'Economics' }
-      ]
-    };
+    this.subjectsList = [
+      {
+        category: 'preSchool',
+        description: 'Test description testttttt',
+        subjects: [
+          { id: 1, name: 'English' },
+          { id: 2, name: 'Math' },
+          { id: 3, name: 'Science' },
+          { id: 4, name: 'Chinese' },
+          { id: 5, name: 'Phonics' },
+          { id: 6, name: 'Creative Writing' },
+          { id: 7, name: 'Tamil' },
+          { id: 8, name: 'Malay' },
+          { id: 9, name: 'Art' },
+          { id: 10, name: 'Hindi' }
+        ]
+      },
+      {
+        category: 'primary',
+        description: 'primary',
+        subjects: [
+          { id: 11, name: 'English' },
+          { id: 12, name: 'Math' },
+          { id: 13, name: 'Science' },
+          { id: 14, name: 'Chinese' }
+        ]
+      },
+      {
+        category: 'lowerSecondary',
+        description: 'lowerSecondary',
+        subjects: [
+          { id: 15, name: 'English' },
+          { id: 16, name: 'Math' },
+          { id: 17, name: 'Science' },
+          { id: 18, name: 'Chinese' },
+          { id: 19, name: 'Physics' },
+          { id: 20, name: 'Biology' },
+          { id: 21, name: 'History' }
+        ]
+      },
+      {
+        category: 'ip',
+        description: 'ip',
+        subjects: [
+          { id: 22, name: 'English' },
+          { id: 23, name: 'Math' },
+          { id: 24, name: 'Science' },
+          { id: 25, name: 'Physics' },
+          { id: 26, name: 'Chemistry' },
+          { id: 27, name: 'Economics' }
+        ]
+      }
+    ]
 
-    this.categories = Object.keys(this.subjectsList);
+    // this.categories = Object.keys(this.subjectsList);
 
-    this.categories.forEach((category: string) => {
-      const formArray = this._formBuilder.array([]);
-      this.subjectsList[category].forEach(() => formArray.push(new FormControl(false)));
-      this.thirdFormGroup.addControl(category, formArray);
-    });
+    // this.categories.forEach((category: string) => {
+    //   const formArray = this._formBuilder.array([]);
+    //   this.subjectsList[category].forEach(() => formArray.push(new FormControl(false)));
+    //   this.thirdFormGroup.addControl(category, formArray);
+    // });
   }
 
- getFormArray(category: string): FormArray {
+  getFormArray(category: string): FormArray {
     return this.thirdFormGroup.get(category) as FormArray<FormControl>;
   }
 

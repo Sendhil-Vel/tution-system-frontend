@@ -2,12 +2,13 @@
   width: 100%;
   height: 100%;
   background: url("../../../../assets/image/register-bg.jpg"), #000;
-  padding-top: 3rem;
+  // padding-top: 3rem;
 
   .vojvoj-login-header {
     width: 100%;
     height: auto;
     text-align: center;
+    padding: 3rem 0;
 
     .vojvoj-brand-logo {
       width: 200px;
@@ -113,7 +114,7 @@
 
     .accordion {
       display: block;
-      max-width: 500px;
+      // max-width: 500px;
     }
 
     .accordion-item {
@@ -134,16 +135,46 @@
       border: none;
       padding: 16px;
       text-align: left;
+      background-color: #646464;
+      color: #ffff;
+    }
 
+    .accordion-item-header.active {
+      background-color: #646464;
+      color: #ffff;
+    }
+
+    .accordion-item-header:hover,
+    .accordion-item-header.active:hover {
+      background-color: #6e6e6e;
+      color: #000000;
     }
 
     .accordion-item-description {
-      font-size: 0.85em;
-      color: #999;
+      font-size: 1rem;
+      color: #ffffff;
+      font-weight: bold;
     }
 
     .accordion-item-body {
-      padding: 16px;
+      padding: 25px 15px;
+
+      .subjects label {
+        padding-right: 15px;
+      }
+
+      h5 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+
+      p {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #a09f9f;
+        margin-bottom: 10px;
+      }
     }
 
     .accordion-item-header:hover {
@@ -159,6 +190,31 @@
     .accordion-item:last-child {
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
+    }
+
+    h5 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #a09f9f;
+      margin-bottom: 10px;
+    }
+
+    .experiences {
+      display: flex;
+      flex-direction: column;
+
+      .experience {
+
+        input[type="checkbox"] {
+          margin-right: 10px;
+        }
+      }
     }
 
     a {
