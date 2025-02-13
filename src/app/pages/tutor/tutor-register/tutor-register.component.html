@@ -5,46 +5,11 @@
               ../../../assets/image/image10.png 2x
             " />
   </div>
-  <!-- <div class="vojvoj-login-content">
-    <p-card header="Tutor Registeration" [style]="{ width: 'fit-content' }">
-      <form [formGroup]="registerFormGroup" (submit)="loginValidation()">
-        <p>
-          <mat-form-field class="w-100">
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="userName" required />
-            <mat-error *ngIf="registerFormGroup.controls.userName.touched">
-              <span *ngIf="registerFormGroup.controls.userName.errors?.['required']">Username is required.</span>
-            </mat-error>
-          </mat-form-field>
-        </p>
-
-        <p>
-          <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput [type]="passwordHide() ? 'password' : 'text'" formControlName="password" required />
-            <button mat-icon-button matSuffix type="button" (click)="hidePasswordEvent($event)"
-              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordHide()">
-              <mat-icon>{{passwordHide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            <mat-error *ngIf="registerFormGroup.controls.password.touched">
-              <span *ngIf="registerFormGroup.controls.password.errors?.['required']">Password is required.</span>
-            </mat-error>
-          </mat-form-field>
-        </p>
-        <div class="divmain">
-          <button type="submit" class="btn vojvoj-login-btn">Register</button>
-        </div>
-      </form>
-      <div class="mt-4">
-        <a href="#" class="mt-4">Back</a>
-      </div>
-    </p-card>
-  </div> -->
 
   <div class="vojvoj-login-content">
     <mat-stepper [linear]="isLinear" #stepper>
       <mat-step [stepControl]="firstFormGroup">
-        <form id="first-form" [formGroup]="firstFormGroup">
+        <form id="fourth-form" [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Step</ng-template>
           <mat-form-field class="w-100">
             <mat-label>Email Address</mat-label>
@@ -81,7 +46,7 @@
           </mat-form-field>
 
           <div class="text-end">
-            <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+            <button mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -132,10 +97,10 @@
             <div class="rowcol2">
               <mat-form-field>
                 <mat-label>Date of Birth</mat-label>
-                <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker">
+                <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="dboPicker">
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="dboPicker"></mat-datepicker-toggle>
+                <mat-datepicker #dboPicker></mat-datepicker>
                 <mat-error
                   *ngIf="secondFormGroup.controls.dateOfBirth.touched && secondFormGroup.controls.dateOfBirth.errors?.['required']">
                   Date of Birth is required.
@@ -220,7 +185,7 @@
 
           <div class="text-end">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+            <button mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -228,34 +193,6 @@
       <mat-step [stepControl]="thirdFormGroup">
         <form id="third-form" [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>Step</ng-template>
-          <!-- <cdk-accordion class="accordion">
-            @for (categoryItem of subjectsList; track categoryItem; let categoryIndex = $index) {
-            <cdk-accordion-item #accordionItem="cdkAccordionItem" class="accordion-item"
-              [class.active]="accordionItem.expanded">
-              <button class="accordion-item-header" (click)="accordionItem.toggle()" tabindex="0"
-                [attr.id]="'accordion-header-' + categoryIndex" [attr.aria-expanded]="accordionItem.expanded"
-                [attr.aria-controls]="'accordion-body-' + categoryIndex">
-                {{ categoryItem?.category | titlecase }}
-                <span class="accordion-item-description">{{ accordionItem.expanded ? '-' : '+' }}</span>
-              </button>
-
-              @if(accordionItem.expanded) {
-              <div class="accordion-item-body" role="region" [attr.id]="'accordion-body-' + categoryIndex"
-                [attr.aria-labelledby]="'accordion-header-' + categoryIndex">
-
-                <div class="subjects">
-                  @for (subject of categoryItem?.subjects; track subject) {
-                  <label>
-                    <input type="checkbox">
-                    {{ subject.name }}
-                  </label>
-                  }
-                </div>
-              </div>
-              }
-            </cdk-accordion-item>
-            }
-          </cdk-accordion> -->
           <cdk-accordion class="accordion">
             @for (categoryItem of subjectsList; track categoryItem; let categoryIndex = $index) {
             <cdk-accordion-item #accordionItem="cdkAccordionItem" class="accordion-item">
@@ -278,6 +215,9 @@
                     {{ subject?.name }}
                   </label>
                   }
+                  <h5 class="mt-3">Minimum Rate</h5>
+                  <p>{{ categoryItem?.rateDescription }}</p>
+                  <input type="number" />
                 </div>
               </div>
               }
@@ -373,6 +313,183 @@
                   </mat-button-toggle>
                 </mat-button-toggle-group>
               </div>
+            </div>
+          </div>
+
+          <div class="text-end">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Step</ng-template>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <mat-form-field class="w-100">
+                <mat-label>Education Leval </mat-label>
+                <mat-select formControlName="educationLeval" required>
+                  <mat-option value="Singaporean">Polytechic/Deploma Student</mat-option>
+                  <mat-option value="Foreigner">Ug</mat-option>
+                  <mat-option value="Foreigner">Pg</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="fourthFormGroup.controls.educationLeval.touched && fourthFormGroup.controls.educationLeval.errors?.['required']">
+                  Please select a Education Leval option.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="rowcol2">
+              <mat-form-field class="w-100">
+                <mat-label>Tutor Category</mat-label>
+                <mat-select formControlName="tutorCategory" required>
+                  <mat-option value="Part-Time">Part-Time</mat-option>
+                  <mat-option value="Full-Time">Full-Time</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="fourthFormGroup.controls.tutorCategory.touched && fourthFormGroup.controls.tutorCategory.errors?.['required']">
+                  Please select a Tutor Category option.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <mat-form-field class="w-100">
+                <mat-label>Academic Qualification And Grades </mat-label>
+                <mat-select formControlName="qualificationAndGrades" required>
+                  <mat-option value="PSLE">PSLE</mat-option>
+                  <mat-option value="'O' levels">'O' levels</mat-option>
+                  <mat-option value="IP (Year 4 Result)">IP (Year 4 Result)</mat-option>
+                  <mat-option value="'A' levels">'A' levels</mat-option>
+                  <mat-option value="IB">IB</mat-option>
+                  <mat-option value="IGCSE">IGCSE</mat-option>
+                  <mat-option value="Diploma/University">Diploma/University</mat-option>
+                  <mat-option value="Music">Music</mat-option>
+                  <mat-option value="NIE/MOE">NIE/MOE</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="fourthFormGroup.controls.qualificationAndGrades.touched && fourthFormGroup.controls.qualificationAndGrades.errors?.['required']">
+                  Please select a Academic Qualification And Grades option.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <mat-form-field class="w-100">
+                <mat-label>School</mat-label>
+                <mat-select formControlName="school" required>
+                  <mat-option value="Part-Time">Part-Time</mat-option>
+                  <mat-option value="Full-Time">Full-Time</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="fourthFormGroup.controls.school.touched && fourthFormGroup.controls.school.errors?.['required']">
+                  Please select a School option.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="rowcol2">
+              <mat-form-field>
+                <mat-label>Graduation Date</mat-label>
+                <input matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="fourthFormGroup.controls.graduationDate.touched && fourthFormGroup.controls.graduationDate.errors?.['required']">
+                  Graduation Date is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <h5 class="mt-4">Grades: </h5>
+          <div class="rowcol mt-3">
+            <div class="rowcol1 col-1">
+              <div class="subject-row" *ngFor="let subject of subjects.slice(0, subjects.length / 2)">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ subject.name }}</mat-label>
+                  <mat-select [(ngModel)]="selectedGrades[subject.formControl]">
+                    <mat-option *ngFor="let grade of grades" [value]="grade">
+                      {{ grade }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="rowcol1 col-2">
+              <div class="subject-row" *ngFor="let subject of subjects.slice(subjects.length / 2)">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ subject.name }}</mat-label>
+                  <mat-select [(ngModel)]="selectedGrades[subject.formControl]">
+                    <mat-option *ngFor="let grade of grades" [value]="grade">
+                      {{ grade }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-end">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <form id="fifth-form">
+          <ng-template matStepLabel>Step</ng-template>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <div class="profile-upload">
+                <h5>Profile Photo</h5>
+                <div>
+                  <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInputProfile>
+                  <button mat-button (click)="fileInputProfile.click()">
+                    <img *ngIf="profilePreview" [src]="profilePreview" alt="Profile Image" class="preview-image">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <mat-form-field class="w-100">
+                <h5>Experiences</h5>
+                <textarea matInput rows="4" placeholder="Type something..."></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="rowcol">
+            <div class="rowcol1">
+              <h5>Documents</h5>
+              <div>
+                <input type="file" #fileInputDocument>
+                <!-- <button mat-button (click)="fileInputDocument.click()">Upload Document</button> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100">
+            <h5>Privacy Preferences</h5>
+            <div>
+              <input type="radio" name="privacy-preferences" id="" />
+              <label class="privacy-preferences" for="privacy-preferences">Ok</label>
+              <input type="radio" name="privacy-preferences" id="" />
+              <label class="privacy-preferences" for="privacy-preferences">Keep profile private (forgo
+                enquiries--)</label>
             </div>
           </div>
 

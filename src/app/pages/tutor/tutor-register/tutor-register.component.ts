@@ -37,7 +37,23 @@ export class TutorRegisterComponent {
       bankOption: ['', Validators.required],
       bankAccountNumber: ['', [Validators.required, Validators.pattern(/^\d{8,}$/)]],
     });
+
     this.thirdFormGroup = this._formBuilder.group({});
+
+    this.fourthFormGroup = this._formBuilder.group({
+      educationLeval: ['', Validators.required],
+      tutorCategory: ['', Validators.required],
+      qualificationAndGrades: ['', Validators.required],
+      school: ['', Validators.required],
+      graduationDate: ['', Validators.required],
+    });
+
+    this.fiveFormGroup = this._formBuilder.group({
+      profile: ['', Validators.required],
+      experiences: ['', Validators.required],
+      document: ['', Validators.required],
+      privacyPreferences: ['', Validators.required],
+    });
   }
 
   private toastMessage!: Message;
@@ -51,6 +67,8 @@ export class TutorRegisterComponent {
   firstFormGroup: any;
   secondFormGroup: any;
   thirdFormGroup: any;
+  fourthFormGroup: any;
+  fiveFormGroup: any;
 
   isLinear = false;
   passwordHide = signal(true);
@@ -58,10 +76,50 @@ export class TutorRegisterComponent {
   subjectsList: any;
   categories: any;
   expandedIndex = 0;
+  profilePreview: string | undefined | ArrayBuffer | null = '../../../../assets/image/user-profile.png';
+  isPublic: boolean = false;
+  isPrivate: boolean = false;
 
+  grades = ['A1', 'A2', 'B3', 'B4', 'C5', 'C6', 'D7', 'E8', 'F9', '------'];
+  selectedGrades: { [key: string]: string } = {};
+  subjects = [
+    { name: 'English', formControl: 'english' },
+    { name: 'Chinese', formControl: 'chinese' },
+    { name: 'Higher Chinese', formControl: 'higherChinese' },
+    { name: 'Additional Math', formControl: 'additionalMath' },
+    { name: 'Elementary Math', formControl: 'elementaryMath' },
+    { name: 'Pure Physics', formControl: 'purePhysics' },
+    { name: 'Pure Chemistry', formControl: 'pureChemistry' },
+    { name: 'Pure Biology', formControl: 'pureBiology' },
+    { name: 'Combined Science (Physics/Chem)', formControl: 'combinedSciencePC' },
+    { name: 'Combined Science (Physics/Biology)', formControl: 'combinedSciencePB' },
+    { name: 'Combined Science (Chemistry/Biology)', formControl: 'combinedScienceCB' },
+    { name: 'English Literature/Language Arts', formControl: 'englishLit' },
+    { name: 'PQA', formControl: 'pqa' },
+    { name: 'Pure History', formControl: 'pureHistory' },
+    { name: 'Pure Geography', formControl: 'pureGeography' },
+    { name: 'Social Studies (SS)', formControl: 'socialStudies' },
+    { name: 'Combined Humanities (History/SS)', formControl: 'combinedHumanitiesHS' },
+    { name: 'Combined Humanities (Geography/SS)', formControl: 'combinedHumanitiesGS' },
+    { name: 'Malay', formControl: 'malay' },
+    { name: 'Tamil', formControl: 'tamil' },
+    { name: 'Higher Malay', formControl: 'higherMalay' },
+    { name: 'Higher Tamil', formControl: 'higherTamil' },
+    { name: 'Hindi', formControl: 'hindi' },
+    { name: 'Computing', formControl: 'computing' }
+  ];
 
   ngOnInit() {
     this.loadSubjects();
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => this.profilePreview = e.target?.result;
+      reader.readAsDataURL(file);
+    }
   }
 
   loadSubjects() {
@@ -69,6 +127,7 @@ export class TutorRegisterComponent {
       {
         category: 'preSchool',
         description: 'Test description testttttt',
+        rateDescription: 'Test description testttttt',
         subjects: [
           { id: 1, name: 'English' },
           { id: 2, name: 'Math' },
@@ -85,6 +144,7 @@ export class TutorRegisterComponent {
       {
         category: 'primary',
         description: 'primary',
+        rateDescription: 'primary',
         subjects: [
           { id: 11, name: 'English' },
           { id: 12, name: 'Math' },
@@ -95,6 +155,7 @@ export class TutorRegisterComponent {
       {
         category: 'lowerSecondary',
         description: 'lowerSecondary',
+        rateDescription: 'lowerSecondary',
         subjects: [
           { id: 15, name: 'English' },
           { id: 16, name: 'Math' },
@@ -108,6 +169,7 @@ export class TutorRegisterComponent {
       {
         category: 'ip',
         description: 'ip',
+        rateDescription: 'ip',
         subjects: [
           { id: 22, name: 'English' },
           { id: 23, name: 'Math' },
